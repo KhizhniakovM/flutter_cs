@@ -11,5 +11,5 @@ class Stack<T> {
   T? pop() => _list.removeLast();
   
   // MARK: - Call
-  void call() => print('$_list');
+  void call() => print('$_list'); 
 }
