@@ -31,6 +31,16 @@ abstract class AbstractRider {
   void choose(Vehicle vehicle);
 }
 
+// Also we can use default implementation for `vehicle`, to avoid unnecessary constructor
+// ```
+// abstract class AbstractRiderDefault {
+//  Vehicle _vehicle = Car();
+
+//  void ride();
+//  void choose(Vehicle vehicle);
+// }
+//  ```
+
 // Implement our new interface in a new class
 class GoodRider implements AbstractRider {
   @override
