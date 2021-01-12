@@ -1,5 +1,9 @@
-// We have some class. We want to use its method.
+import 'package:meta/meta.dart';
+
+// We have some class. We want to use its method. We can't override this method or class.
+// I don't know how to prevent this class from inheritance and can we do it generally. 
 class Adaptee {
+  @nonVirtual
   void specificUnchangedMethod() {
     print('[Adaptee] make specific method');
   }
@@ -9,7 +13,6 @@ class Adaptee {
 abstract class Target {
   void makeSth();
 }
-
 // Create Adapter.
 class Adapter implements Target {
   // MARK: - Properties
@@ -23,4 +26,17 @@ class Adapter implements Target {
     print('[Adapter] user call interface method');
     _adaptee.specificUnchangedMethod();
   }
+}
+
+// More `darty` =) method with double inheritance
+// Create mixin with nexessary method
+mixin TargetMixin {
+  void makeSth();
+}
+// Extend Adaptee with TargetMethod
+class AdapterAnother extends Adaptee with TargetMixin {
+  @override
+  void makeSth() {
+    this.specificUnchangedMethod();
+  }  
 }
