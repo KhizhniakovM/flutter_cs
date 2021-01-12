@@ -28,8 +28,9 @@ class Adapter implements Target {
   }
 }
 
-// More `darty` =) method with double inheritance
-// Create mixin with nexessary method
+// More `dart'y` =) method with double inheritance
+// Create mixin with necessary method
+// But maybe this break SOLID single-responsibility principle ??
 mixin TargetMixin {
   void makeSth();
 }
