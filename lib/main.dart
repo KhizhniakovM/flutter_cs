@@ -1,7 +1,5 @@
-import 'package:flutter_cs/design_patterns/structural/adapter.dart';
-
-import 'patterns/delegate.dart';
-
+import 'problems/math.dart';
 void main() {
 
+  print(countOfPrimeNumbersUntil(1000));
 }
