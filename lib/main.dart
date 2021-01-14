@@ -1,5 +1,5 @@
-import 'problems/math.dart';
+import 'package:flutter/material.dart';
+import 'architectural_patterns/bloc/first_example/first_example.dart';
 void main() {
-
-  print(countOfPrimeNumbersUntil(1000));
+  runApp(FirstExampleApp());
 }
