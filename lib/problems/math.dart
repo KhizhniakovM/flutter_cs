@@ -18,14 +18,14 @@ int lcd(int a, int b) {
 double exponentiation({ required int base, required int power }) {
   double result = 1;
   while (power > 1 || power < -1) {
-    if (power.remainder(2) == 1) { result *= base; }
+    if (power.remainder(2) == 1 || power.remainder(2) == -1) { result *= base; }
     base *= base;
     power ~/= 2;
   }
 
   if (power > 0) { result *= base; }
-  if (power < 0) { result = (1 / result); }
-  return result.toDouble();
+  if (power < 0) { result = (1 / (result *= base)); }
+  return result;
 }
 
 // ==================================================
