@@ -2,6 +2,7 @@ import 'dart:math';
 // ==================================================
 /// The Euclidean algorithm. LCD of two numbers.
 int lcd(int a, int b) {
+  if (a <= 0 || b <= 0 ) return 1;
   while (a > 0 && b > 0) {
     if (a > b) {
       a = a % b;
@@ -14,18 +15,17 @@ int lcd(int a, int b) {
 
 // ==================================================
 /// The Al-Kashi algorithm. Exponentiation. 
-int exponentiation({ required int base, required int power }) {
-  int result = 1;
-  while (power > 1) {
+double exponentiation({ required int base, required int power }) {
+  double result = 1;
+  while (power > 1 || power < -1) {
     if (power.remainder(2) == 1) { result *= base; }
-    print('$base, $power');
     base *= base;
     power ~/= 2;
-    print('$base, $power');
   }
 
   if (power > 0) { result *= base; }
-  return result;
+  if (power < 0) { result = (1 / result); }
+  return result.toDouble();
 }
 
 // ==================================================
