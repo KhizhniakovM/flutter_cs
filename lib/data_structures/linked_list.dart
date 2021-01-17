@@ -1,6 +1,6 @@
 class Node<T> {
   // MARK: - Properties
-  T value;
+  final T value;
   Node? next;
   Node? previous;
 
@@ -36,6 +36,9 @@ class LinkedList<T> {
     }
     return result;
   }
+
+  // MARK: - Initializer
+  LinkedList([this._head]);
 
   // MARK: - Methods
   Node? node(int index) {
