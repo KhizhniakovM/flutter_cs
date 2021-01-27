@@ -1,28 +1,33 @@
 import 'binary_node.dart';
-// Binary search tree
-// Left child is always smaller than parent, right child is always bigger than parent
 
-// Extension for T that is number
-extension BinarySearchTree<T extends num> on BinaryNode {
-  // MARK: - Methods
-  void insert(T value) {
-    if (value < this.value) {
-      if (left != null) { left?.insert(value); } else { left = BinaryNode(value); }
-    } else { 
-      if (right != null) { right?.insert(value); } else { right = BinaryNode(value); }
+class BinarySearchTree<T extends num> {
+  // MARK: - Properties
+  BinaryNode<T>? _root;
+  BinaryNode<T>? get root => _root;
+
+  // MARK: - Initializers
+  BinarySearchTree([this._root]);
+  BinarySearchTree.from(List<T> list) : _root = BinaryNode(list.first) {
+    for (var i = 1; i < list.length; i++) {
+      this.insertValue(list[i]);
     }
   }
+
+  // MARK: - Insertion
+  void insertValue(T value) {
+    BinaryNode<T> node = BinaryNode<T>(value);
+    if (root == null) { _root = node; } 
+    else { this._insertNode(_root!, node); }
+  }
+  void _insertNode(BinaryNode<T> root, BinaryNode<T> node) {
+    if (root.value > node.value) {
+      root.left != null ? this._insertNode(root.left!, node) : root.left = node;
+    } else {
+      root.right != null ? this._insertNode(root.right!, node) : root.right = node;
+    }
+  }
+
+  // MARK: - Traverse
+  // Preorder
+  
 }
-
-// TODO: - Dart doesn't show error before you run that code.
-
-// ```
-// BinaryNode<String> nodeString = BinaryNode("1");
-// BinaryNode<int> nodeInt = BinaryNode(1);
-//
-// nodeInt.insert(5);
-// nodeString.insert(5);
-//
-// nodeString();
-// nodeInt();
-// ```

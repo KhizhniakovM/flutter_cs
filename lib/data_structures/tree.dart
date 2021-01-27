@@ -25,6 +25,5 @@ class TreeNode<T> {
   }
 
   // MARK: - Call
-  String call() =>
-      '$value' + ' { ' + this.children.map((node) => node()).join(', ') + ' }';
+  String call() => '$value' + ' { ' + this.children.map((node) => node()).join(', ') + ' }';
 }
