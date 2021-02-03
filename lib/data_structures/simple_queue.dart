@@ -1,6 +1,6 @@
 class Queue<T> {
   // MARK: - Properties
-  List<T> _list = [];
+  final List<T> _list = [];
 
   T? get peek => _list.isEmpty ? null : _list.first;
   int get length => _list.length;
