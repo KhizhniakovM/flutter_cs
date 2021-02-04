@@ -1,4 +1,6 @@
-class Stack<T> {
+import 'package:flutter_cs/data_structures/stack/stack.dart';
+
+class Stack<T> extends IStack<T> {
   // MARK: - Properties
   final List<T> _list = [];
 

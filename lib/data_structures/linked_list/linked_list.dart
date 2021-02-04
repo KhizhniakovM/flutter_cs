@@ -1,15 +1,4 @@
-class Node<T> {
-  // MARK: - Properties
-  final T value;
-  Node? next;
-  Node? previous;
-
-  // MARK: - Initializer
-  Node(this.value);
-
-  // MARK: - Methods
-  String toString() => '$value';
-}
+import 'package:flutter_cs/data_structures/linked_list/linked_list_node.dart';
 
 class LinkedList<T> {
   // MARK: - Properties
@@ -67,8 +56,8 @@ class LinkedList<T> {
     }
     Node? lastNode = last;
 
-    node.previous = lastNode;
-    lastNode?.next = node;
+    node.setPrevious(lastNode);
+    lastNode?.setNext(node);
   }
 
   void appendList(LinkedList list) {
@@ -89,8 +78,8 @@ class LinkedList<T> {
 
   void insertNode(Node node, int index) {
     if (index <= 0) {
-      node.next = _head;
-      _head?.previous = node;
+      node.setNext(_head);
+      _head?.setPrevious(node);
       _head = node;
     } else {
       if (index > this.lenght) {
@@ -99,18 +88,18 @@ class LinkedList<T> {
       Node? previous = this.node(index - 1);
       Node? next = previous?.next;
 
-      node.previous = previous;
-      node.next = next;
-      next?.previous = node;
-      previous?.next = node;
+      node.setPrevious(previous);
+      node.setNext(next);
+      next?.setPrevious(node);
+      previous?.setNext(node);
     }
   }
 
   void insertList(LinkedList list, int index) {
     if (list.isEmpty) return;
     if (index <= 0) {
-      list.last?.next = _head;
-      _head?.previous = list.last;
+      list.last?.setNext(_head);
+      _head?.setPrevious(list.last);
       _head = list.head;
     } else {
       if (index > this.lenght) {
@@ -119,10 +108,10 @@ class LinkedList<T> {
       Node? previous = this.node(index - 1);
       Node? next = previous?.next;
 
-      list.head?.previous = previous;
-      list.last?.next = next;
-      next?.previous = list.last;
-      previous?.next = list.head;
+      list.head?.setPrevious(previous);
+      list.last?.setNext(next);
+      next?.setPrevious(list.last);
+      previous?.setNext(list.head);
     }
   }
 
@@ -141,16 +130,16 @@ class LinkedList<T> {
     Node? next = node.next;
 
     if (previous != null) {
-      previous.next = next;
+      previous.setNext(next);
     } else {
       _head = next;
     }
     if (next != null) {
-      next.previous = previous;
+      next.setPrevious(previous);
     }
 
-    node.next = null;
-    node.previous = null;
+    node.setNext(null);
+    node.setPrevious(null);
     return node.value;
   }
 

@@ -1,4 +1,6 @@
-import 'package:flutter_cs/data_structures/list.dart';
+import 'package:flutter_cs/data_structures/list/factor_list.dart';
+import 'package:flutter_cs/data_structures/list/single_list.dart';
+import 'package:flutter_cs/data_structures/list/vector_list.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -104,6 +106,24 @@ void main() {
 
       expect(factorList.size(), 1000);
       expect(factorList.get(998), 998);
+    });
+    test('remove element from factorList', () {
+      factorList.add(1);
+      expect(factorList.trueSize(), 1);
+      factorList.removeAt(0);
+      expect(factorList.size(), 0);
+      expect(factorList.trueSize(), 1);
+    });
+    test('remove some elements from factorList', () {
+      factorList.add(1);
+      factorList.add(2);
+      factorList.add(3);
+      factorList.removeAt(1);
+
+      expect(factorList.size(), 2);
+      expect(factorList.get(0), 1);
+      expect(factorList.get(1), 3);
+      expect(factorList.trueSize(), 2);
     });
   });
 }

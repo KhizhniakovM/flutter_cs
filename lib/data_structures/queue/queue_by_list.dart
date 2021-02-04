@@ -1,4 +1,6 @@
-class Queue<T> {
+import 'package:flutter_cs/data_structures/queue/queue.dart';
+
+class QueueByList<T> extends IQueue<T> {
   // MARK: - Properties
   final List<T> _list = [];
 

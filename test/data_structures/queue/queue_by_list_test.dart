@@ -1,12 +1,12 @@
-import 'package:flutter_cs/data_structures/simple_queue.dart';
+import 'package:flutter_cs/data_structures/queue/queue_by_list.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   // MARK: - Properties
-  Queue? queue;
+  QueueByList? queue;
   // MARK: - SetUp & TearDown
   setUp(() {
-    queue = Queue<int>();
+    queue = QueueByList<int>();
   });
   tearDown(() {
     queue = null;

@@ -1,5 +1,6 @@
+import 'package:flutter_cs/data_structures/linked_list/linked_list_node.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_cs/data_structures/linked_list.dart';
+import 'package:flutter_cs/data_structures/linked_list/linked_list.dart';
 
 void main() {
   // MARK: - Properties

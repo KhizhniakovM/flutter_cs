@@ -1,4 +1,4 @@
-import 'package:flutter_cs/data_structures/stack.dart';
+import 'package:flutter_cs/data_structures/stack/stack_by_list.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
