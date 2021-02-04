@@ -5,7 +5,7 @@ class Stack<T> extends IStack<T> {
   final List<T> _list = [];
 
   bool get isEmpty => _list.isEmpty;
-  int get lenght => _list.length;
+  int get length => _list.length;
   T? get peek => _list.isEmpty ? null : _list.last;
 
   // MARK: - Methods

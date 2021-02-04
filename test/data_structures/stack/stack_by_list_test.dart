@@ -20,7 +20,7 @@ void main() {
     stack?.push(9);
 
     expect(stack?.isEmpty, false);
-    expect(stack?.lenght, 2);
+    expect(stack?.length, 2);
     expect(stack?.peek, 9);
   });
   test('pop element', () {
@@ -30,7 +30,7 @@ void main() {
 
     expect(stack?.isEmpty, false);
     expect(stack?.peek, -5);
-    expect(stack?.lenght, 1);
+    expect(stack?.length, 1);
   });
   test('pop many times', () {
     stack?.push(-3245);
@@ -39,6 +39,6 @@ void main() {
 
     expect(stack?.isEmpty, true);
     expect(stack?.peek, null);
-    expect(stack?.lenght, 0);
+    expect(stack?.length, 0);
   });
 }

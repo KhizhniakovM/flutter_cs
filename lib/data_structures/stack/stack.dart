@@ -1,6 +1,6 @@
 abstract class IStack<T> {
   bool get isEmpty;
-  int get lenght;
+  int get length;
   T? get peek;
 
   void push(T element);
