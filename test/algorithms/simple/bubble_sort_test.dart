@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_cs/algorithms/bubble_sort.dart';
+import 'package:flutter_cs/algorithms/simple/bubble_sort.dart';
 
 void main() {
   test('bubble sort', () {
