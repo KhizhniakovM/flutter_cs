@@ -24,7 +24,7 @@ void main() {
     expect(queue?.length, 2);
     expect(queue?.peek, 5);
   });
-    test('dequeue value', () {
+  test('dequeue value', () {
     queue?.enqueue(-23);
     queue?.enqueue(1000);
     queue?.dequeue();
@@ -33,12 +33,19 @@ void main() {
     expect(queue?.length, 1);
     expect(queue?.peek, 1000);
   });
-
   test('dequeue many times', () {
     queue?.enqueue(100);
     queue?.dequeue();
     queue?.dequeue();
 
     expect(queue?.isEmpty, true);
+  });
+  test('queue length', () {
+    queue?.enqueue(1);
+    queue?.enqueue(2);
+    queue?.enqueue(3);
+    queue?.dequeue();
+
+    expect(queue?.length, 2);
   });
 }

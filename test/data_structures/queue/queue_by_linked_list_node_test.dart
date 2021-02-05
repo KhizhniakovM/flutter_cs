@@ -41,4 +41,12 @@ void main() {
 
     expect(queue?.isEmpty, true);
   });
+  test('queue length', () {
+    queue?.enqueue(1);
+    queue?.enqueue(2);
+    queue?.enqueue(3);
+    queue?.dequeue();
+
+    expect(queue?.length, 2);
+  });
 }

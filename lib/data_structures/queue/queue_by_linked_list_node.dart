@@ -19,7 +19,14 @@ class QueueByLinkedListNode<T> extends IQueue<T> {
   }
 
   // MARK: - Methods
-  void enqueue(T element) => !isEmpty ? _head?.setNext(Node(element, previous: _head)) : _head = Node(element);
+  void enqueue(T element) {
+    if (isEmpty) { _head = Node(element); return; }
+    Node? node = _head;
+    while (node?.next != null) {
+      node = node?.next;
+    }
+    node?.setNext(Node(element, previous: node));
+  }
   T? dequeue() {
     T? value = _head?.value;
     _head = _head?.next;

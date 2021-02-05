@@ -1,7 +1,6 @@
 import 'package:flutter_cs/data_structures/linked_list/linked_list_node.dart';
 import 'stack.dart';
-// NOTE: - It is will be good to use linked list only with reference on next node 
-// TODO: - This is realisation of list with one reference.
+
 class StackByLinkedListNode<T> extends IStack<T> {
   // MARK: - Properties
   Node? _head;
@@ -20,13 +19,18 @@ class StackByLinkedListNode<T> extends IStack<T> {
   }
 
   // MARK: - Methods
-  void push(T value) => _head = Node(value, next: _head);
+  void push(T value) { 
+    Node? node = Node(value, next: _head);
+    _head?.setPrevious(node);
+    _head = node; 
+    }
   T? pop() {
     if (isEmpty) {
       return null;
     }
     T value = _head?.value;
     _head = _head?.next;
+    _head?.setPrevious(null);
     return value;
   }
 }
