@@ -1,16 +1,19 @@
 # flutter_cs
 
-A new Flutter project.
+Welcome to flutter_cs!
+Here you'll find my implementations of popular algorithms, data structures, design patterns and others cool stuff in very interesting and promising language - DART!
 
-## Getting Started
+## Where to start?
+### Data Structures
+  * [Stack](https://github.com/KhizhniakovM/flutter_cs/tree/main/lib/data_structures/stack)
+  * [Queue](https://github.com/KhizhniakovM/flutter_cs/tree/main/lib/data_structures/queue)
+  
+### Algorithms
+  * [Bubble Sort](https://github.com/KhizhniakovM/flutter_cs/blob/main/lib/algorithms/simple/bubble_sort.dart)
 
-This project is a starting point for a Flutter application.
+### Design Patterns
+  * [Creational](https://github.com/KhizhniakovM/flutter_cs/tree/main/lib/design_patterns/creational)
+  * [Structural](https://github.com/KhizhniakovM/flutter_cs/tree/main/lib/design_patterns/structural)
+  
+### and others...
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
