@@ -1,4 +1,6 @@
-import 'package:flutter_cs/data_structures/binary_node.dart';
-void main() {
+import 'package:flutter/material.dart';
+import 'package:flutter_cs/best_practices/navigation/navigation.dart';
 
+void main() {
+  runApp(MyApp());
 }

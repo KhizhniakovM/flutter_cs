@@ -1,13 +1,13 @@
-import 'binary_node.dart';
+import '../binary_tree/binary_node.dart';
 
-class BinarySearchTree<T extends num> {
+class BinaryTree<T extends num> {
   // MARK: - Properties
   BinaryNode<T>? _root;
   BinaryNode<T>? get root => _root;
 
   // MARK: - Initializers
-  BinarySearchTree([this._root]);
-  BinarySearchTree.from(List<T> list) : _root = BinaryNode(list.first) {
+  BinaryTree([this._root]);
+  BinaryTree.from(List<T> list) : _root = BinaryNode(list.first) {
     for (var i = 1; i < list.length; i++) {
       this.insertValue(list[i]);
     }

@@ -2,16 +2,7 @@
 // Memory - O(1)
 
 List mergeSort(List list) {
-  if (list.length < 2) return list; 
-  int middleIndex = list.length ~/ 2;
-
-  List left = mergeSort(list.sublist(0, middleIndex));
-  List right = mergeSort(list.sublist(middleIndex));
-
-  return merge(left, right);
-}
-
-List merge(List left, List right) {
+  List merge(List left, List right) {
   int leftIndex= 0, rightIndex = 0;
 
   List sortedList = [];
@@ -41,4 +32,13 @@ List merge(List left, List right) {
   }
 
   return sortedList;
+}
+  
+  if (list.length < 2) return list; 
+  int middleIndex = list.length ~/ 2;
+
+  List left = mergeSort(list.sublist(0, middleIndex));
+  List right = mergeSort(list.sublist(middleIndex));
+
+  return merge(left, right);
 }

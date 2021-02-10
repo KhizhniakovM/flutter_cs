@@ -58,20 +58,20 @@ class _FirstExampleHomePageState extends State<FirstExampleHomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    FlatButton(
+                    TextButton(
                       onPressed: () {
                         BlocProvider.of<CounterCubit>(context)
                             .decrement(); // We can use this method
                       },
                       child: Text('-'),
-                      color: Colors.red,
+                      style: ButtonStyle(backgroundColor: MyColor()),
                     ),
-                    FlatButton(
+                   TextButton(
                       onPressed: () {
                         context.read<CounterCubit>().increment();
                       },
                       child: Text('+'),
-                      color: Colors.green,
+                      style: ButtonStyle(backgroundColor: MyColor()),
                     ),
                   ],
                 )
@@ -80,6 +80,21 @@ class _FirstExampleHomePageState extends State<FirstExampleHomePage> {
             ),
           ),
         ));
+  }
+}
+
+class MyColor extends MaterialStateColor {
+  static const int _defaultColor = 0xcafefeed;
+  static const int _pressedColor = 0xdeadbeef;
+
+  const MyColor() : super(_defaultColor);
+
+  @override
+  Color resolve(Set<MaterialState> states) {
+    if (states.contains(MaterialState.pressed)) {
+      return const Color(_pressedColor);
+    }
+    return const Color(_defaultColor);
   }
 }
 
@@ -126,17 +141,17 @@ class _FirstExampleHomePageConsumerState
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                FlatButton(
+                TextButton(
                     onPressed: () {
                       context.read<CounterCubit>().decrement();
                     },
-                    color: Colors.red,
+                    style: ButtonStyle(backgroundColor: MyColor()),
                     child: Text('-')),
-                FlatButton(
+                TextButton(
                     onPressed: () {
                       BlocProvider.of<CounterCubit>(context).increment();
                     },
-                    color: Colors.green,
+                    style: ButtonStyle(backgroundColor: MyColor()),
                     child: Text('+'))
               ],
             )

@@ -2,7 +2,7 @@
 // Memory - O(1)
 
 // TODO: - find info about it
-List shellSort(List list) {
+void shellSort(List list) {
   for (int gap = list.length ~/ 2; gap > 0; gap ~/= 2) {
     for (int i = 0; i + gap < list.length; i++) {
       int j = i + gap;
@@ -14,5 +14,4 @@ List shellSort(List list) {
       list[j] = tmp;
     }
   }
-  return list;
 }

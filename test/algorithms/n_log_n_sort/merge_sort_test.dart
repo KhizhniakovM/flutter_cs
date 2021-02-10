@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_cs/algorithms/merge_sort.dart';
+import 'package:flutter_cs/algorithms/n_log_n_sort/merge_sort.dart';
 void main() {
   test('merge sort', () {
     List list = [1,4,7,2,3,9,5];

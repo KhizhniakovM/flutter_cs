@@ -1,8 +1,13 @@
 // Runtime - O(n^2)
 // Memory - O(1)
 
-List selectionSort(List list) {
-  if (list.length < 2) { return list; }
+void selectionSort(List list) {
+  void swap(int a, int b) {
+    var tmp = list[a];
+    list[a] = list[b];
+    list[b] = tmp;
+  }
+  if (list.length < 2) { return; }
   for (int i = 0; i < list.length; i++) {
     int lowest = i;
     for (int j = i + 1; j < list.length; j++) {
@@ -11,10 +16,7 @@ List selectionSort(List list) {
       }
     }
     if (i != lowest) {
-      var tmp = list[i];
-      list[i] = list[lowest];
-      list[lowest] = tmp;
+      swap(i, lowest);
     }
   }
-  return list;
 }
