@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'dart:io';
 
 class UniversalButton extends StatelessWidget {
-
   final Widget text;
   final void Function() onPressed;
 
@@ -14,6 +13,6 @@ class UniversalButton extends StatelessWidget {
     if (Platform.isIOS) {
       return CupertinoButton(child: text, onPressed: onPressed);
     }
-    return TextButton(onPressed: onPressed, child: text);
+    return TextButton(child: text, onPressed: onPressed);
   }
 }

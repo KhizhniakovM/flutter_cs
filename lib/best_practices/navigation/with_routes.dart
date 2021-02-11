@@ -1,27 +1,25 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_cs/best_practices/navigation/router.dart';
 import 'package:flutter_cs/universal_ui/universal.dart';
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    if (Platform.isIOS) {
-      return CupertinoApp(home: Home());
-    }
-    return MaterialApp(home: Home());
-  }
+void main() {
+  runApp(UniversalApp(
+    home: Home(),
+    initialRoute: '/',
+    onGenerateRoute: (settings) => RouteGenerator.generateRoute(settings),
+  ));
 }
 
 // ==================================================
 class Home extends StatefulWidget {
-  String? returnedFromSecond;
+  String? _returnedFromSecond;
 
   @override
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> with DetailsDelegate {
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return UniversalScaffold(Center(
@@ -30,39 +28,29 @@ class _HomeState extends State<Home> with DetailsDelegate {
         children: [
           UniversalButton(Text('Next page'), _goToSecond),
           Text('Home Page'),
-          Text('${widget.returnedFromSecond ?? ""}'),
+          Text('${widget._returnedFromSecond ?? ""}'),
         ],
       ),
     ));
   }
-
-  // MARK: - Simple navigator method
-  void _goToSecond() async {
-    if (Platform.isIOS) {
-      await Navigator.push(context,
-          CupertinoPageRoute(builder: (context) => Details('Hello iOS', this)));
-    } else {
-      await Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => Details('Hello Android', this)));
-    }
+  void _goToSecond() {
+    Navigator.pushNamed(context, '/details',
+        arguments: {'passedString': 'Hello', 'passedMethod': _callBackMethod});
   }
-
-  @override
-  void updateView(String string) {
-    widget.returnedFromSecond = string;
-    setState(() {});
+  // TODO: - Errors on android version
+  void _callBackMethod(String text) {
+    setState(() {
+      widget._returnedFromSecond = text;
+    });
   }
-
-  // MARK: - Delegate
 }
 
 class Details extends StatefulWidget {
   final String passedString;
-  final DetailsDelegate? delegate;
+  final Function callBack;
 
-  Details(this.passedString, [this.delegate]);
+  const Details({Key? key, required this.passedString, required this.callBack})
+      : super(key: key);
 
   @override
   _DetailsState createState() => _DetailsState();
@@ -81,14 +69,9 @@ class _DetailsState extends State<Details> {
       ),
     ));
   }
-
   // MARK: - Simple navigator method
   void _pop() {
-    widget.delegate?.updateView('Hello from second screen');
+    widget.callBack('Hello from second');
     Navigator.pop(context);
   }
-}
-
-mixin DetailsDelegate {
-  void updateView(String string);
 }
