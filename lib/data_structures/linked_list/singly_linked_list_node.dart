@@ -3,20 +3,17 @@ class Node<T> {
   final T _value;
   T get value => _value;
 
-  Node? _next;
-  Node? get next => _next;
-  Node? _previous;
-  Node? get previous => _previous;
+  Node<T>? _next;
+  Node<T>? get next => _next;
 
   // MARK: - Initializer
-  Node(this._value, {Node? next, Node? previous}) {
+  Node(this._value, {Node<T>? next}) {
     this._next = next;
-    this._previous = previous;
   }
 
   // MARK: - Methods
-  void setNext(Node? node) => this._next = node;
-  void setPrevious(Node? node) => this._previous = node;
+  void setNext(Node<T>? node) => this._next = node;
+
   String toString() {
     List<T> result = [];
     Node? currentNode = this;
