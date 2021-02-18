@@ -23,7 +23,6 @@ List chunked(List list, int lenght) {
   return result;
 }
 
-
 int quickSearch(List list, int k) {
   if (list.length == 1) { return list[0]; }
   int pivot = pickPivot(list);

@@ -1,9 +1,8 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
-class MainTabBar extends StatelessWidget {
-  const MainTabBar({
+class ArtistTabBar extends StatelessWidget {
+  const ArtistTabBar({
     Key? key,
   }) : super(key: key);
 
@@ -21,13 +20,15 @@ class MainTabBar extends StatelessWidget {
           Container(
               margin: const EdgeInsets.only(right: 25),
               height: 50,
-              width: 120,
+              width: 60,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.copy, color: Colors.black),
-                  Icon(Icons.search, color: Colors.black),
-                  Icon(Icons.account_circle_outlined, color: Colors.black)
+                  Text(
+                    '+',
+                    style: TextStyle(fontSize: 25),
+                  ),
+                  Icon(Icons.mail_outline, color: Colors.black)
                 ],
               ))
         ],
@@ -50,18 +51,18 @@ class TabBarButton extends StatelessWidget {
         child: Container(
             margin: const EdgeInsets.only(left: 25),
             height: 60,
-            width: 120,
+            width: 280,
             decoration: BoxDecoration(
                 color: Color(0xFFFF3644),
                 borderRadius: BorderRadius.circular(30)),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  CustomDotsIcon(),
+                  Icon(Icons.account_circle_outlined, color: Colors.white),
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child: Text(
-                      'Home',
+                      '235k',
                       style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'Gilroy',
@@ -70,43 +71,5 @@ class TabBarButton extends StatelessWidget {
                     ),
                   )
                 ])));
-  }
-}
-
-class CustomDotsIcon extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        margin: const EdgeInsets.only(left: 10),
-        width: 12,
-        height: 12,
-        child: CustomPaint(
-          painter: DotsPainter(),
-        ));
-  }
-}
-
-class DotsPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    var paint = Paint();
-    paint.color = Colors.white;
-    paint.strokeWidth = 5;
-    paint.strokeCap = StrokeCap.round;
-    paint.style = PaintingStyle.stroke;
-
-    List<Offset> points = [
-      Offset(0, 0),
-      Offset(size.width, 0),
-      Offset(size.width, size.height),
-      Offset(0, size.height),
-    ];
-
-    canvas.drawPoints(PointMode.points, points, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
   }
 }

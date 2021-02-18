@@ -1,20 +1,15 @@
-import 'package:art_inspire/pages/home/home_ui/theme_point.dart';
+import 'package:art_inspire/pages/home/home_ui/theme_chooser/theme_button.dart';
 import 'package:flutter/material.dart';
 
-class ThemeButtons extends StatelessWidget {
-  Function? chooseMethod;
+class HomeThemeChooser extends StatelessWidget {
   final List<String> list = ['Pop Art', 'Geometric', 'Nature'];
 
-  ThemeButtons({
+  HomeThemeChooser({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-  chooseMethod = () {
-
-  };
-
     return Container(
         padding: const EdgeInsets.only(left: 50),
         height: 50,
@@ -22,6 +17,6 @@ class ThemeButtons extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: list.length,
             itemBuilder: (context, position) =>
-                ThemePoint(text: list[position], chooseMethod: chooseMethod!,)));
+                ThemeButton(text: list[position])));
   }
 }
