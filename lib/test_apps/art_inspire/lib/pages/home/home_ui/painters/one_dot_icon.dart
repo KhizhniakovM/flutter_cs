@@ -7,15 +7,21 @@ class OneDotIcon extends StatelessWidget {
   final Color color;
   final double strokeWidth;
 
-  OneDotIcon({Key? key, this.width, this.height, required this.color, required this.strokeWidth}) : super(key: key);
+  const OneDotIcon(
+      {Key? key,
+      this.width,
+      this.height,
+      required this.color,
+      required this.strokeWidth})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        width: this.width,
-        height: this.height,
+    return SizedBox(
+        width: width,
+        height: height,
         child: CustomPaint(
-          painter: OneDotPainter(color: this.color, strokeWidth: this.strokeWidth),
+          painter: OneDotPainter(color: color, strokeWidth: strokeWidth),
         ));
   }
 }
@@ -28,13 +34,13 @@ class OneDotPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    var paint = Paint();
-    paint.color = this.color;
-    paint.strokeWidth = this.strokeWidth;
+    final paint = Paint();
+    paint.color = color;
+    paint.strokeWidth = strokeWidth;
     paint.strokeCap = StrokeCap.round;
     paint.style = PaintingStyle.stroke;
 
-    List<Offset> points = [
+    final points = [
       Offset(size.width / 2, size.height / 2),
     ];
 

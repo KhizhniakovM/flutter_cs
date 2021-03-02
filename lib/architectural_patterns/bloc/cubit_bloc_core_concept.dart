@@ -11,6 +11,16 @@ Stream<int> boatStream() async* {
     yield i;
   }
 }
+
+//```
+// void main() {
+//   Stream<int> stream = boatStream();
+
+//   stream.listen((event) { 
+//     print('Received boat #$event');
+//   });
+// }
+//```
 // ==================================================
 // async* - GENERATES async data
 // yield - PUSHES the boat to the stream river 

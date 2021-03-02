@@ -26,7 +26,7 @@ class Artist extends StatelessWidget {
                     ),
                     Container(
                       color: Colors.red,
-                      height: 300,
+                      height: 700,
                     )
                   ]),
                 )

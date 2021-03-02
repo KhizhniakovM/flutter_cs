@@ -12,13 +12,13 @@ void main() {
 
 // ==================================================
 class Home extends StatefulWidget {
-  String? _returnedFromSecond;
-
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+  String? _returnedFromSecond;
+
   @override
   Widget build(BuildContext context) {
     return UniversalScaffold(Center(
@@ -27,7 +27,7 @@ class _HomeState extends State<Home> {
         children: [
           UniversalButton(Text('Next page'), _goToSecond),
           Text('Home Page'),
-          Text('${widget._returnedFromSecond ?? ""}'),
+          Text('${_returnedFromSecond ?? ""}'),
         ],
       ),
     ));
@@ -54,7 +54,7 @@ class _HomeState extends State<Home> {
 
   void _callBackMethod(String text) {
     setState(() {
-      widget._returnedFromSecond = text;
+      _returnedFromSecond = text;
     });
   }
   // MARK: - Delegate
