@@ -25,3 +25,7 @@ class Facade {
     _presenter.presentOnScreen();
   }
 }
+
+// Facade doesn't broke SRP principle, 
+// because its single responsibility is to 
+// COMBINE functionality
