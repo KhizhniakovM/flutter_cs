@@ -1,0 +1,19 @@
+# There we can write all lint options for our app 
+# https://dart-lang.github.io/linter/lints/index.html
+
+# linter:
+#  rules:
+#   - name_of_parameter
+# or name_of_parameter: true/false
+
+##################################################
+# analyzer:
+#   errors:
+#     name_of_parameter: error
+
+# - ignor 
+# - info
+# - warning
+# - error 
+
+# include: package:lint/analysis_options.yaml
