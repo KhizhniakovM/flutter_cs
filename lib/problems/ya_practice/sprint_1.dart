@@ -1,4 +1,6 @@
 // А. Значения функции
+import 'dart:math';
+
 class Sprint1 {
   int a(int a, int x, int b, int c) {
     return a * (x * x) + b * x + c;
@@ -28,4 +30,36 @@ class Sprint1 {
 
     return result;
   }
+
+  List<int> c(int lenght, List<int> number, int k) {
+    int tmp = 0;
+    List<int> result = List<int>.empty(growable: true);
+
+    for (int start = 0; start < lenght; start++) {
+      tmp += number[start] * (pow(10, (lenght - 1 - start)).toInt());
+    }
+
+    tmp += k;
+
+    while (tmp >= 1) {
+      int i = tmp % 10;
+      tmp = (tmp / 10).round();
+      result.insert(0, i);
+    }
+
+    return result;
+  }
+
+  List<int> d(List<int> points) {
+    points.removeWhere((element) => element == 0);
+    return points;
+  }
+
+  // int e(int number) {
+  //   int result = 0;
+
+  //   while (number >= 1) {
+
+  //   }
+  // }
 }

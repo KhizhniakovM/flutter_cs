@@ -34,4 +34,30 @@ void main() {
       expect(result, [1]);
     });
   });
+
+  group('c', () {
+    test('1', () {
+      List<int> result = sprint1.c(4, [1, 2, 0, 0], 34);
+
+      expect(result, [1, 2, 3, 4]);
+    });
+    test('2', () {
+      List<int> result = sprint1.c(2, [9, 5], 17);
+
+      expect(result, [1, 1, 2]);
+    });
+  });
+
+  group('d', () {
+    test('1', () {
+      List<int> result = sprint1.d([-1, 0, 0, 1, 2, -1, -4, 0]);
+
+      expect(result, [-1, 1, 2, -1, -4]);
+    });
+    test('2', () {
+      List<int> result = sprint1.d([-1, 1, 2, -1, -4]);
+
+      expect(result, [-1, 1, 2, -1, -4]);
+    });
+  });
 }

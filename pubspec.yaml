@@ -24,7 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # pedantic: ^1.10.0-nullsafety.3
+  pedantic: ^1.10.0-nullsafety.3
   flutter_bloc: ^7.0.0-nullsafety.0
   provider: ^5.0.0-nullsafety.3
   cupertino_icons: ^1.0.1
@@ -34,7 +34,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  lint: ^1.0.0
+  # lint: ^1.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

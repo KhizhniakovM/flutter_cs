@@ -38,6 +38,7 @@ mixin TargetMixin {
 class AdapterAnother extends Adaptee with TargetMixin {
   @override
   void makeSth() {
+    print('[Adapter] user call interface method');
     this.specificUnchangedMethod();
   }  
 }
