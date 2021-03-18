@@ -45,7 +45,9 @@ void main() {
     test('2', () {
       List<List<int>> result = pascalsTriangle(1);
 
-      expect(result, [[1]]);
+      expect(result, [
+        [1]
+      ]);
     });
   });
 }

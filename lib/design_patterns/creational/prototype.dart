@@ -17,16 +17,20 @@ class Point {
   // MARK: - Initializers
   const Point(this.x, this.y);
 }
+// NOTE: - Implementation with extension methods
+extension SuperPoint on Point {
+  Point clone() => Point(x, y);
+}
 
 // NOTE: - Implementation with mixin
 // ```
-class SuperPoint extends Point with Prototype<SuperPoint> {
-  // MARK: - Initializers
-  SuperPoint(int x, int y) : super(x, y);
+// class SuperPoint extends Point with Prototype<SuperPoint> {
+//   // MARK: - Initializers
+//   SuperPoint(int x, int y) : super(x, y);
 
-  // MARK: - Methods
-  SuperPoint clone() => SuperPoint(x, y);
-}
+//   // MARK: - Methods
+//   SuperPoint clone() => SuperPoint(x, y);
+// }
 // ```
 
 // or we can add this methods directly in the main class

@@ -17,3 +17,21 @@ String reverseString(String input) {
   }
   return tmpString.join();
 }
+
+// MARK: - Valid anagram 
+bool isAnagram(String first, String second) {
+  var tmpFirst = first.split('');
+  var tmpSecond = second.split('');
+  var map = Map<String, int>();
+
+  for (String i in tmpFirst) {
+    if (map[i] == null) { map[i] = 1; } else {map[i] = map[i]! + 1;}
+  }
+  for (String i in tmpSecond) {
+    if (map[i] == null) { map[i] = 1; } else {map[i] = map[i]! - 1;}
+  }
+  for (int i in map.values) {
+    if (i != 0) { return false; }
+  }
+  return true;
+}

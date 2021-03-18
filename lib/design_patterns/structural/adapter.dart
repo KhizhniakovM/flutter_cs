@@ -28,7 +28,7 @@ class Adapter implements Target {
   }
 }
 
-// More `dart'y` =) method with double inheritance
+// More `dart'y` =) method with "double" inheritance
 // Create mixin with necessary method
 // But maybe this break SOLID single-responsibility principle ??
 mixin TargetMixin {

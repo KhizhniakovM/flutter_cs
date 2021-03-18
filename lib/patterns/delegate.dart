@@ -1,4 +1,13 @@
-// Create mixin
+// We have manager and we want that he delegate some of his functions to worker
+class Manager {
+  ManagerDelegate? delegate;
+  
+  void manageToDoSth() {
+    delegate?.doSth();
+  }
+}
+
+// Create mixin with this functions 
 mixin ManagerDelegate {
   void doSth();
 }
@@ -8,11 +17,4 @@ class Worker with ManagerDelegate {
       print('do sth');
     }
 }
-// Add delegate to manager class, and assign it to make sth
-class Manager {
-  ManagerDelegate? delegate;
-  
-  void manageToDoSth() {
-    delegate?.doSth();
-  }
-}
+
