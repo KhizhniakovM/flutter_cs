@@ -50,4 +50,36 @@ void main() {
       ]);
     });
   });
+  group('valid parentheses', () {
+    test('1', () {
+      String string = '(({{}}))';
+      bool result = isValidParentheses(string);
+
+      expect(result, true);
+    });
+    test('2', () {
+      String string = '(({{))';
+      bool result = isValidParentheses(string);
+
+      expect(result, false);
+    });
+    test('3', () {
+      String string = '([)]';
+      bool result = isValidParentheses(string);
+
+      expect(result, false);
+    });
+  });
+  group('isHappy', () {
+    test('1', () {
+      bool result = isHappy(19);
+
+      expect(result, true);
+    });
+    test('2', () {
+      bool result = isHappy(2);
+
+      expect(result, false);
+    });
+  });
 }

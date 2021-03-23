@@ -1,3 +1,4 @@
+// Not very good for big numbers, but can be good for small lists with small numbers
 List<int> countingSort(List<int> list) {
   List<int> result = List<int>.filled(list.length, 0);
 

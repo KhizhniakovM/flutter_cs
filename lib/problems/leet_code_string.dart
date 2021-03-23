@@ -17,7 +17,6 @@ String reverseString(String input) {
   }
   return tmpString.join();
 }
-
 // MARK: - Valid anagram 
 bool isAnagram(String first, String second) {
   var tmpFirst = first.split('');
