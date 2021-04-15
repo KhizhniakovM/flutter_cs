@@ -1,13 +1,13 @@
-import 'package:flutter_cs/data_structures/binary_tree/bst_node.dart';
+import 'package:flutter_cs/data_structures/binary_tree/avl_node.dart';
 
-class BST_Tree<Key extends int, Value> {
+class AVL_Tree<Key extends int, Value> {
   // MARK: - Properties
-  BST_Node<Key, Value>? root;
+  AVL_Node<Key, Value>? root;
 
   // MARK: - Initializers
-  BST_Tree({this.root});
+  AVL_Tree({this.root});
 
-  void insert(BST_Node<Key, Value> node) {
+  void insert(AVL_Node<Key, Value> node) {
     if (root == null) {
       root = node;
       return;
@@ -15,7 +15,7 @@ class BST_Tree<Key extends int, Value> {
     root?.insert(node);
   }
   // MARK: - Search 
-  BST_Node<Key, Value>? search(Key key) => root?.search(key);
+  AVL_Node<Key, Value>? search(Key key) => root?.search(key);
   // MARK: - Delete
   void delete(Key key) {
     if (root?.key == key) {

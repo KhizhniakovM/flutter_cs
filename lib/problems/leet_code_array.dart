@@ -32,27 +32,33 @@ Set<List<int>> permute(List<int> list) {
 }
 
 // MARK: - Max part of array
-List<int> findMaxPartOfList(List<int> list) {
-  List<int>? result;
-  int sum = 0;
+// Make new class for our problem
+class MaxSumRange {
+  int start;
+  int end;
+  int maxSum;
 
-  for (int i = 0; i < list.length; i++) {
-    for (int j = i + 1; j < list.length; j++) {
-      int tmpSum = 0;
-      int tmpI = i;
-
-      while (tmpI < j) {
-        tmpSum += list[tmpI];
-        tmpI++;
-      }
-      if (tmpSum > sum) {
-        sum = tmpSum;
-        result = list.sublist(i, j);
-      }
-    }
-  }
-  return result!;
+  MaxSumRange(this.start, this.end, this.maxSum);
 }
 
-// MARK: - Find max part of array (log n)
+List<int> getMaxSumRange(List<int> list) {
+  int currSum = 0;
+  int startIndex = 0;
+  MaxSumRange? maxSumRange;
+
+  for (int endIndex = 0; endIndex < list.length; endIndex++) {
+    currSum += list[endIndex];
+
+    if (maxSumRange == null || currSum > maxSumRange.maxSum)
+      maxSumRange = MaxSumRange(startIndex, endIndex, currSum);
+
+    if (currSum < 0) {
+      currSum = 0;
+      startIndex = endIndex + 1;
+    }
+  }
+  return list.sublist(maxSumRange!.start, maxSumRange.end + 1);
+}
+
+// MARK: - Max part of array (log n)
 

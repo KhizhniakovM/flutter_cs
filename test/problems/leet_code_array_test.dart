@@ -35,11 +35,11 @@ void main() {
         -22,
         15,
         -4,
-        7,
+        7
       ];
-      List<int> result = findMaxPartOfList(list);
+      List<int> result = getMaxSumRange(list);
 
-      expect(result, [18,20,-7,12]);
+      expect(result, [18, 20, -7, 12]);
     });
   });
 }

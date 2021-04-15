@@ -11,7 +11,7 @@ void heapSort(List list) {
   // MARK: - Method to make heap-list data structure from list
   void down(int size, int root) {
     int left = (root * 2) + 1;
-    int right = left++;
+    int right = left + 1;
     int result = root;
 
     if (left < size && list[left] > list[result]) { result = left; }
