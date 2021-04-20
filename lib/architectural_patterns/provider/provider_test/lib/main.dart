@@ -36,6 +36,7 @@ class HomePageProvider extends StatelessWidget {
 
                 // context.read<String>()
                 // Нельзя использовать read внутри метода build
+                // Используйте read для вызова методов
               ),
             ),
           );

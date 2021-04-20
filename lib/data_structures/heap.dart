@@ -1,10 +1,18 @@
 class BinaryHeap<Key extends int, Value> {
-  List<HeapElement> _list = [];
-  List<HeapElement> get list => _list;
+  List<HeapElement<Key, Value>> _list = [];
+  List<HeapElement<Key, Value>> get list => _list;
+
+  BinaryHeap();
+  BinaryHeap.from(List<HeapElement<Key, Value>> list) {
+    _list = list;
+    for (int i = size ~/ 2; i >= 0; i--) {
+      heapify(i);
+    }
+  }
 
   int get size => _list.length;
 
-  // MARK: - Add 
+  // MARK: - Add
   void add(HeapElement<Key, Value> element) {
     _list.add(element);
 
@@ -19,7 +27,43 @@ class BinaryHeap<Key extends int, Value> {
       i = parent;
       parent = (i - 1) ~/ 2;
     }
+  }
 
+  // MARK: - Heapify
+  void heapify(int i) {
+    int leftChild;
+    int rightChild;
+    int largestChild;
+
+    for (;;) {
+      leftChild = 2 * i + 1;
+      rightChild = 2 * i + 2;
+      largestChild = i;
+
+      if (leftChild < size && _list[leftChild].key > _list[largestChild].key) {
+        largestChild = leftChild;
+      }
+      if (rightChild < size &&
+          _list[rightChild].key > _list[largestChild].key) {
+        largestChild = rightChild;
+      }
+      if (largestChild == i) {
+        break;
+      }
+      var tmp = _list[i];
+      list[i] = list[largestChild];
+      list[largestChild] = tmp;
+      i = largestChild;
+    }
+  }
+
+  // MARK: - GetMax
+  HeapElement<Key, Value> getMax() {
+    HeapElement<Key, Value> result = _list[0];
+    _list[0] = _list[size - 1];
+    _list.removeAt(size - 1);
+    heapify(0);
+    return result;
   }
 }
 
@@ -42,17 +86,9 @@ void main() {
   HeapElement el9 = HeapElement(key: 9, value: '9');
   HeapElement el0 = HeapElement(key: 0, value: '0');
 
-  BinaryHeap heap = BinaryHeap();
-  heap.add(el2);
-  heap.add(el4);
-  heap.add(el7);
-  heap.add(el1);
-  heap.add(el9);
-  heap.add(el0);
-  heap.add(el8);
-  heap.add(el6);
-  heap.add(el3);
-  heap.add(el5);
+  List<HeapElement> list = [el2, el4, el7, el1, el9, el0, el8, el6, el3, el5];
+
+  BinaryHeap heap = BinaryHeap.from(list);
 
   for (var i in heap.list) {
     print(i.value);
