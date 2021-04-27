@@ -2,12 +2,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_cs/universal_ui/universal.dart';
-
+import 'package:flutter_cs/universal_ui/universal_scaffold.dart';
 
 void main() {
-  runApp(UniversalApp(
-    home: Home(),
-  ));
+  runApp(Universal.app(home: Home()));
 }
 
 // ==================================================
@@ -25,7 +23,7 @@ class _HomeState extends State<Home> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          UniversalButton(Text('Next page'), _goToSecond),
+          Universal.button(child: Text('Next page'), onPressed: _goToSecond),
           Text('Home Page'),
           Text('${_returnedFromSecond ?? ""}'),
         ],
@@ -78,7 +76,7 @@ class _DetailsState extends State<Details> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          UniversalButton(Text('Return'), _pop),
+          Universal.button(child: Text('Return'), onPressed: _pop),
           Text(widget.passedString)
         ],
       ),

@@ -2,76 +2,97 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_cs/best_practices/navigation/router.dart';
 import 'package:flutter_cs/universal_ui/universal.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(UniversalApp(
-    home: Home(),
-    initialRoute: '/',
-    onGenerateRoute: (settings) => RouteGenerator.generateRoute(settings),
-  ));
+  runApp(AppWidget());
 }
+// TODO: - Add blocs to this example
 
-// ==================================================
-class Home extends StatefulWidget {
+class AppWidget extends StatelessWidget {
   @override
-  _HomeState createState() => _HomeState();
+  Widget build(BuildContext context) {
+    return Universal.app(
+      initialRoute: '/',
+      onGenerateRoute: RouteGenerator.generateRoute,
+    );
+  }
 }
 
-class _HomeState extends State<Home> {
-  String? _returnedFromSecond;
+class HomePage extends StatelessWidget {
+  ValueNotifier<String> returnedFromSecond = ValueNotifier('');
 
   @override
   Widget build(BuildContext context) {
-    return UniversalScaffold(Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          UniversalButton(Text('Next page'), _goToSecond),
-          Text('Home Page'),
-          Text('${_returnedFromSecond ?? ""}'),
-        ],
-      ),
-    ));
-  }
-  void _goToSecond() {
-    Navigator.pushNamed(context, '/details',
-        arguments: {'passedString': 'Hello', 'passedMethod': _callBackMethod});
-  }
-  // TODO: - Errors on android version
-  void _callBackMethod(String text) {
-    setState(() {
-      _returnedFromSecond = text;
-    });
+    // On that level we store all our logical components
+    // as bloc and provider
+    return MultiProvider(
+      child: HomeView(),
+      providers: [
+        ValueListenableProvider<String?>.value(value: returnedFromSecond),
+        Provider<HomePage>(create: (_) => this)
+      ],
+    );
   }
 }
 
-class Details extends StatefulWidget {
+class HomeView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Universal.button(
+                child: Text('Next page'),
+                onPressed: () => _goToSecond(context)),
+            Text('Home Page'),
+            Text(context.watch<String?>() ?? ''),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _goToSecond(BuildContext context) async {
+    context.read<HomePage>().returnedFromSecond.value =
+        await Navigator.pushNamed<dynamic>(context, '/details',
+            arguments: <String, dynamic>{'passedString': 'Hello'});
+  }
+}
+
+class DetailsPage extends StatelessWidget {
   final String passedString;
-  final Function callBack;
 
-  const Details({Key? key, required this.passedString, required this.callBack})
-      : super(key: key);
+  const DetailsPage({Key? key, required this.passedString}) : super(key: key);
 
-  @override
-  _DetailsState createState() => _DetailsState();
-}
-
-class _DetailsState extends State<Details> {
   @override
   Widget build(BuildContext context) {
-    return UniversalScaffold(Center(
+    return MultiProvider(
+      providers: [
+        Provider(create: (context) => passedString),
+      ],
+      child: DetailsView(),
+    );
+  }
+}
+
+class DetailsView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Universal.scaffold(
+        child: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          UniversalButton(Text('Return'), _pop),
-          Text(widget.passedString)
+          Universal.button(
+              child: Text('Return'), onPressed: () => _pop(context)),
+          Text(context.watch<String>())
         ],
       ),
     ));
   }
-  // MARK: - Simple navigator method
-  void _pop() {
-    widget.callBack('Hello from second');
-    Navigator.pop(context);
-  }
+
+  void _pop(BuildContext context) => Navigator.pop(context, 'Hello my friend!');
 }
