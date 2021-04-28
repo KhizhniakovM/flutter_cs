@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "516522670529",
+    "project_id": "test-c89a2",
+    "storage_bucket": "test-c89a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516522670529:android:40666be139b98a6a7b1740",
+        "android_client_info": {
+          "package_name": "com.khizhniakov.example"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "516522670529-ea4hvglup2qhsqrio4fmmssd27vboq27.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYTAaDDlX-c9W7rAIC5PA8WBFyxI7P-34"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "516522670529-ea4hvglup2qhsqrio4fmmssd27vboq27.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "516522670529-8u3724d3ua1c5ndor9i7qi5ja97ao7bg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.khizhniakov.myApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
